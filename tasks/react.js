@@ -8,6 +8,8 @@
 
 'use strict';
 
+var async = require('async');
+
 module.exports = function(grunt) {
 
   var path = require('path');
@@ -23,7 +25,7 @@ module.exports = function(grunt) {
       grunt.verbose.warn('Destination not written because no source files were provided.');
     }
 
-    grunt.util.async.forEachSeries(this.files, function(f, nextFileObj) {
+    async.eachSeries(this.files, function(f, nextFileObj) {
       var destFile = f.dest;
 
       var files = f.src.filter(function(filepath) {
@@ -45,7 +47,7 @@ module.exports = function(grunt) {
       }
 
       var compiled = [];
-      grunt.util.async.concatSeries(files, function(file, next) {
+      async.eachSeries(files, function(file, next) {
         grunt.log.writeln('[react] Compiling ' + file.cyan + ' --> ' + destFile.cyan);
 
         try {

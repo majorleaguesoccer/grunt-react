@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "react-tools": "~0.8.0",
-    "through": "~2.3.4"
+    "through": "~2.3.4",
+    "async": "~0.2.9"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
